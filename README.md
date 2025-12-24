@@ -1,6 +1,6 @@
 # 🌦️ ClimaSight: Multi-City Weather & Air Quality Analytics Dashboard
 
-![Dashboard Preview](Images/dashboard-preview.png)
+![Dashboard Preview](Images/ClimaSight%20Dashboard.png)
 
 ## 📊 Project Overview
 
@@ -147,55 +147,31 @@ WeatherAPI → Power Query → Data Transformation → Data Model → Power BI V
 ---
 
 ## 📁 Project Structure
-ClimaSight/    
+
+ClimaSight/
 │    
-├── Data/    
-│ ├── weather_current.json    
-│ ├── weather_forecast.json    
-│ └── air_quality.json    
-│   
+├── Dataset/    
+│   ├── Current.xlsx    
+│   ├── Forecast_by_Day.xlsx    
+│   ├── Forecast_by_Hour.xlsx    
+│   └── Master_Table.xlsx    
+│    
+├── Icons/     
+│    
+├── Images/    
+│   └── dashboard-preview.png    
+│    
 ├── Power BI/   
-│ ├── ClimaSight.pbix   
-│
-├── Documentation/    
-│ ├── Data_Dictionary.md    
-│ ├── API_Documentation.md    
-│ └── DAX_Measures.md    
-│
-├── Images/
-│ └── dashboard-preview.png   
-│    
-└── README.md     
+│   └── ClimaSight.pbix    
+│     
+└── README.md    
+        
 
 ### 🔄 Data Refresh Schedule
 - Refresh Frequency: Every 1 hour
 - Data Retention: 30 days historical data
 - API Call Limits: 1,000,000 calls/month (free tier)
 
----
-
-## 📊 Sample DAX Measures
-
-```DAX
--- Current Temperature
-Current_Temperature =
-SELECTEDVALUE(Weather[temp_c])
-
--- AQI Status
-AQI_Status =
-SWITCH(
-    TRUE(),
-    [AQI_Value] <= 50, "Good",
-    [AQI_Value] <= 100, "Moderate",
-    [AQI_Value] <= 150, "Unhealthy (Sensitive)",
-    [AQI_Value] <= 200, "Unhealthy",
-    "Very Unhealthy"
-)
-
--- Average Weekly Temperature
-Avg_Weekly_Temp =
-AVERAGE(Forecast[avg_temp_c])
-```
 ---
 
 ## 🔮 Future Enhancements
